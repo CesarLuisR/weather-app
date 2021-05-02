@@ -9,7 +9,7 @@ const useGeolocation = () => {
 
     const fetchOptions = {
       mode: "cors",
-      "Access-Controll-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
     };
 
     fetch(url, fetchOptions)
