@@ -14,7 +14,10 @@ const useGeolocation = () => {
 
     fetch(url, fetchOptions)
       .then((resp) => (resp.ok ? resp.json() : Promise.reject(resp)))
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        setLocationWeatherInfo(data);
+      })
       .catch((err) => console.log("error:", err));
   };
 
