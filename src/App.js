@@ -1,12 +1,16 @@
 import React from "react";
+import "./styles/App.scss";
 import useGeolocation from "./components/hooks/useGeolocation";
+import TodayWeather from "./components/layout/TodayWeather";
 
 const App = () => {
-  const locationWeatherInfo = useGeolocation();
+  const { locationWeatherInfo, locationError } = useGeolocation();
 
-  if (locationWeatherInfo) console.log(locationWeatherInfo);
-
-  return <div className="app-container">Buenos dias</div>;
+  return (
+    <div className="app-container">
+      <TodayWeather data={locationWeatherInfo} />
+    </div>
+  );
 };
 
 export default App;

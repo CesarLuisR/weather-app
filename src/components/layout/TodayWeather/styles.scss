@@ -1,0 +1,132 @@
+.today-weather {
+  position: relative;
+  background: #1e213a;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.today-weather__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 42px 46px;
+
+  button {
+    background: #6e707a;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Raleway;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #e7e7eb;
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+
+  .search-for-places-btn {
+    width: 161px;
+    height: 40px;
+  }
+
+  .btn-idontnow {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.today-weather__ilustration {
+  position: relative;
+  width: calc(100% + 30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 360px;
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("../../../assets/bg-cloud.png");
+    background-size: cover;
+    background-position: center -30px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+  }
+
+  .today-weather__img {
+    transform: scale(0.8);
+    opacity: 1;
+    z-index: 10;
+  }
+}
+
+.today-weather__temperature {
+  text-align: center;
+  font-family: Raleway;
+  font-weight: 500;
+  font-size: 144px;
+  line-height: 169px;
+  color: #e7e7eb;
+
+  span {
+    color: #a09fb1;
+    font-size: 60px;
+    margin-top: 60px;
+    height: max-content;
+  }
+}
+
+.today-weather__temperature-type {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  color: #a09fb1;
+  margin: 87px 0;
+}
+
+.today-weather__date {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #88869d;
+
+  span {
+    padding: 0 10px;
+  }
+}
+
+.today-weather__location {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #88869d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 52px;
+
+  span {
+    padding: 0 5px;
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

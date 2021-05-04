@@ -1,43 +1,49 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
-const useGeolocation = () => {
+const useGeolocation = (specificLocation) => {
   const [locationWeatherInfo, setLocationWeatherInfo] = useState({});
   const [locationError, setLocationError] = useState(false);
 
-  const getLocationWeatherInfo = (latitude, longitude) => {
-    const url = `https://www.metaweather.com/api/location/search/?lattlong=${latitude},${longitude}`;
+  const cors = "https://cors-anywhere.herokuapp.com";
 
-    const fetchOptions = {
-      mode: "cors",
+  const axiosOptions = {
+    mode: "cors",
+    headers: {
       "Access-Control-Allow-Origin": "*",
-    };
-
-    fetch(url, fetchOptions)
-      .then((resp) => (resp.ok ? resp.json() : Promise.reject(resp)))
-      .then((data) => {
-        console.log(data);
-        setLocationWeatherInfo(data);
-      })
-      .catch((err) => console.log("error:", err));
+    },
   };
 
-  const position = (pos) => {
-    getLocationWeatherInfo(pos.coords.latitude, pos.coords.longitude);
+  const getLocationWeatherInfo = async (latitude, longitude) => {
+    const url = `${cors}/https://www.metaweather.com/api/location/search/?lattlong=${latitude},${longitude}`;
+    const resp = await axios.get(url, axiosOptions);
+    const weatherInfoUrl = `${cors}/https://www.metaweather.com/api/location/${resp.data[0].woeid}/`;
+    const data = await axios.get(weatherInfoUrl, axiosOptions);
+
+    setLocationWeatherInfo({
+      today: data.data.consolidated_weather[0],
+      otherDay: data.data.consolidated_weather.slice(1),
+      location: data.data.title,
+    });
   };
 
-  const error = (err) => setLocationError(true);
-
-  const options = {
-    timeout: 5000,
-    maximumAge: 0,
-    enableHighAccuracy: true,
-  };
-
-  navigator.geolocation.getCurrentPosition(position, error, options);
+  const error = (err) => setLocationError(err);
 
   useEffect(() => {
-    // console.log(locationWeatherInfo, locationError);
-  }, [locationWeatherInfo, locationError]);
+    const position = (pos) =>
+      getLocationWeatherInfo(pos.coords.latitude, pos.coords.longitude);
+
+    const options = {
+      timeout: 5000,
+      maximumAge: 0,
+      enableHighAccuracy: true,
+    };
+
+    navigator.geolocation.getCurrentPosition(position, error, options);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [specificLocation]);
+
+  return { locationWeatherInfo, locationError };
 };
 
 export default useGeolocation;
