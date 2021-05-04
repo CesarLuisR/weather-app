@@ -1,16 +1,16 @@
-.today-weather {
+.sidebar {
   position: relative;
   background: #1e213a;
   min-height: 100vh;
   overflow: hidden;
 }
 
-.today-weather__header {
+.header {
   display: flex;
   justify-content: space-between;
   padding: 42px 46px;
 
-  button {
+  .header__btn {
     background: #6e707a;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family: Raleway;
@@ -18,17 +18,14 @@
     font-size: 16px;
     line-height: 19px;
     color: #e7e7eb;
+    width: 161px;
+    height: 40px;
     cursor: pointer;
     border: none;
     outline: none;
   }
 
-  .search-for-places-btn {
-    width: 161px;
-    height: 40px;
-  }
-
-  .btn-idontnow {
+  .header__btn--circle {
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -38,7 +35,7 @@
   }
 }
 
-.today-weather__ilustration {
+.sidebar__ilustration {
   position: relative;
   width: calc(100% + 30px);
   display: flex;
@@ -58,14 +55,14 @@
     opacity: 0.1;
   }
 
-  .today-weather__img {
+  .sidebar__img {
     transform: scale(0.8);
     opacity: 1;
     z-index: 10;
   }
 }
 
-.today-weather__temperature {
+.sidebar__temperature {
   text-align: center;
   font-family: Raleway;
   font-weight: 500;
@@ -81,7 +78,7 @@
   }
 }
 
-.today-weather__temperature-type {
+.sidebar__temperature-type {
   font-family: Raleway;
   font-style: normal;
   font-weight: 600;
@@ -92,7 +89,7 @@
   margin: 87px 0;
 }
 
-.today-weather__date {
+.sidebar__date {
   font-family: Raleway;
   font-style: normal;
   font-weight: 500;
@@ -106,7 +103,7 @@
   }
 }
 
-.today-weather__location {
+.sidebar__location {
   font-family: Raleway;
   font-style: normal;
   font-weight: 600;
