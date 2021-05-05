@@ -16,47 +16,37 @@ const useFilterImage = (weatherType) => {
   useEffect(() => {
     switch (weatherType) {
       case "Snow":
-        setImage(snow);
-        break;
+        return setImage(snow);
 
       case "Sleet":
-        setImage(sleet);
-        break;
+        return setImage(sleet);
 
       case "Hail":
-        setImage(hail);
-        break;
+        return setImage(hail);
 
       case "Thunderstorm":
-        setImage(thunderstorm);
-        break;
+        return setImage(thunderstorm);
 
       case "Heavy Rain":
-        setImage(heavyRain);
-        break;
+        return setImage(heavyRain);
 
       case "Light Rain":
-        setImage(lightRain);
-        break;
+        return setImage(lightRain);
 
       case "Showers":
-        setImage(shower);
-        break;
+        return setImage(shower);
 
       case "Heavy Cloud":
-        setImage(heavyCloud);
-        break;
+        return setImage(heavyCloud);
 
       case "Light Cloud":
-        setImage(lightCloud);
-        break;
+        return setImage(lightCloud);
 
       case "Clear":
-        setImage(clear);
-        break;
+        return setImage(clear);
 
       default:
-        break;
+        return weatherType;
     }
   }, [weatherType]);
 
