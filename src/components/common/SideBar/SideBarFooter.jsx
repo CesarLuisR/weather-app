@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const SideBarFooter = (props) => {
   const d = new Date(props.date).toDateString(),
     splitted = d.split(" ");

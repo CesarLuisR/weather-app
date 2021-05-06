@@ -1,5 +1,5 @@
 import React from "react";
-import useFilterImage from "../hooks/useFilterImage";
+import useFilterImage from "../../hooks/useFilterImage";
 
 const SideBarMain = (props) => {
   const image = useFilterImage(props.type);
