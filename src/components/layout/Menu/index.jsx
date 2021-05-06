@@ -1,42 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.scss";
+import Match from "../../common/Match";
+import useSearchedLocation from "../../hooks/useSearchedLocation";
 
 const Menu = (props) => {
+  const [location, setLocation] = useState("");
+  const [inputText, setInputText] = useState("");
   const menuState = props.isOpen ? "menu" : "menu disabled";
+  const data = useSearchedLocation(location);
+
+  const handleChange = (e) => {
+    setLocation(e.target.value);
+    setInputText(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    props.changeInfo(data);
+    props.close();
     e.target.reset();
   };
 
-  const close = (e) => {
-    const element = e.target.parentElement.parentElement;
-    element.style.animation = "closeMenu 0.8s";
-  }
+  const matchesToInput = (name) => setInputText(name);
 
   return (
     <div className={menuState}>
-      <div
-        className="closeMenu"
-        onClick={(e) => {
-          props.close();
-          close(e);
-        }}
-      >
+      <div className="closeMenu" onClick={props.close}>
         <span className="material-icons close">close</span>
       </div>
       <form className="search-zone" onSubmit={handleSubmit}>
         <div className="input-container">
           <span className="material-icons">search</span>
-          <input type="text" placeholder="search location" />
+          <input
+            type="text"
+            placeholder="search location"
+            onChange={handleChange}
+            value={inputText}
+          />
         </div>
         <input type="submit" value="Search" className="search-btn" />
       </form>
       <div className="matches-zone">
-        <div className="item">
-          London
-          <span className="material-icons arrow">navigate_next</span>
-        </div>
+        {data?.matches &&
+          data.matches.map((match, index) => (
+            <Match name={match} key={index} click={matchesToInput} />
+          ))}
       </div>
     </div>
   );

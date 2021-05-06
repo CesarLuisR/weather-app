@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useGeolocation = (updateLocation, specificLocation = "none") => {
+const useGeolocation = (updateLocation) => {
   const [locationWeatherInfo, setLocationWeatherInfo] = useState({});
   const [locationError, setLocationError] = useState(false);
 
@@ -41,7 +41,7 @@ const useGeolocation = (updateLocation, specificLocation = "none") => {
 
     navigator.geolocation.getCurrentPosition(position, error, options);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [specificLocation, updateLocation]);
+  }, [updateLocation]);
 
   return { locationWeatherInfo, locationError };
 };

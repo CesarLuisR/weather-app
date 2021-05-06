@@ -3,8 +3,8 @@ import "./styles.scss";
 
 const Match = (props) => {
   return (
-    <div className="match">
-      {props.name}
+    <div className="match" onClick={() => props.click(props.name)}>
+      <span>{props.name}</span>
       <span className="material-icons arrow">navigate_next</span>
     </div>
   );

@@ -6,8 +6,10 @@ const SideBarHeader = (props) => {
 
   useGeolocation(controllerUpdate);
 
-  const handleUpdateGeolocation = () =>
+  const handleUpdateGeolocation = () => {
     setControllerUpdate(...controllerUpdate, "update");
+    props.changeInfo(false);
+  }
 
   return (
     <div className="header">

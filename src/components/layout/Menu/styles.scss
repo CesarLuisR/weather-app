@@ -7,29 +7,12 @@
   z-index: 10;
   background: #1e213a;
   padding: 19px 53px;
-  animation: openMenu 0.8s;
-}
-
-@keyframes openMenu {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes closeMenu {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  transition: transform .8s;
+  transform: translateX(0);
 }
 
 .disabled {
-  display: none;
+  transform: translateX(-100%);
 }
 
 .closeMenu {
@@ -56,7 +39,6 @@
   align-items: center;
 
   input {
-    // width: calc(100%);
     width: calc(max-content - 12px);
     box-sizing: border-box;
     font-family: Raleway;
