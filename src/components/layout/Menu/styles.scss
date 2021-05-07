@@ -1,14 +1,19 @@
 .menu {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 459px;
+  width: 100%;
+  max-width: 459px;
   height: 100%;
   z-index: 10;
   background: #1e213a;
   padding: 19px 53px;
   transition: transform .8s;
   transform: translateX(0);
+
+  @media (max-width: 500px) {
+    padding: 19px 20px;
+  }
 }
 
 .disabled {
@@ -64,36 +69,5 @@
 
   &:hover {
     background: #3c47e980;
-  }
-}
-
-.item {
-  height: 64px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 12px;
-  align-items: center;
-  font-family: Raleway;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  color: #e7e7eb;
-  cursor: pointer;
-  transition: 0.5s;
-  border: 1px solid transparent;
-  margin-bottom: 28px;
-
-  .arrow {
-    display: none;
-  }
-
-  &:hover {
-    border: 1px solid #616475;
-
-    .arrow {
-      display: block;
-      color: #616475;
-    }
   }
 }

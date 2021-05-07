@@ -20,6 +20,7 @@ const SideBar = (props) => {
           <SideBarMain
             type={props.data.today.weather_state_name}
             todayMaxTemp={Math.round(String(props.data.today.max_temp))}
+            weatherScale={props.weatherScale}
           />
           <SideBarFooter
             location={props.data.location}
