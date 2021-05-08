@@ -1,5 +1,4 @@
 .app-container {
-  min-width: 100vh !important;
   display: grid;
   grid-template-columns: 459px 1fr;
   background: #100e1d;
@@ -10,6 +9,7 @@
 }
 
 .app-error {
+  min-width: 100vh;
   grid-template-columns: 1fr;
 }
 
